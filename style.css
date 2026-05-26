@@ -1,0 +1,107 @@
+/* --- Animasi Bintang Kelap-Kelip --- */
+@keyframes twinkle {
+    0% { opacity: 0.2; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); text-shadow: 0 0 10px #DAA520; }
+    100% { opacity: 0.2; transform: scale(0.8); }
+}
+
+/* --- Reset & Font Dasar --- */
+body { 
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+    background-color: #111; 
+    color: #eee; 
+    margin: 0; 
+    padding: 10px; 
+    font-size: 16px; 
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* --- Elemen Dekorasi Background --- */
+.dekor-bg { position: fixed; pointer-events: none; z-index: -1; }
+.bintang { color: #DAA520; animation: twinkle 4s infinite ease-in-out; }
+.bintang:nth-child(1) { top: 5%; left: 5%; font-size: 80px; animation-delay: 0s; }
+.bintang:nth-child(2) { top: 20%; right: 8%; font-size: 60px; animation-delay: 1s; }
+.bintang:nth-child(3) { bottom: 15%; left: 10%; font-size: 70px; animation-delay: 2s; }
+.bintang:nth-child(4) { bottom: 10%; right: 5%; font-size: 90px; animation-delay: 3s; }
+
+.belah-ketupat { border: 1px solid rgba(218, 165, 32, 0.2); transform: rotate(45deg); }
+.belah-ketupat:nth-child(5) { top: -20px; right: -20px; width: 100px; height: 100px; }
+.belah-ketupat:nth-child(6) { bottom: 30%; left: -30px; width: 80px; height: 80px; }
+.belah-ketupat:nth-child(7) { top: 40%; right: -15px; width: 60px; height: 60px; }
+
+/* --- Container Utama --- */
+.container { 
+    background: #fff; color: #222; padding: 25px; border-radius: 16px; 
+    border: 1px solid rgba(218, 165, 32, 0.4); box-shadow: 0 15px 40px rgba(0,0,0,0.7); 
+    margin: 10px auto; max-width: 600px; box-sizing: border-box; position: relative;
+}
+
+/* --- Pengaturan Logo Pojok Kanan Atas --- */
+.logo-pojok {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 65px; 
+    height: auto;
+    z-index: 10;
+}
+
+/* --- Ornamen Judul Utama --- */
+h2 { text-align: center; color: #111; padding-bottom: 15px; margin-top: 5px; font-size: 1.5rem; font-weight: 900; text-transform: uppercase; letter-spacing: 2px; position: relative; }
+h2::after { content: "❖ ✦ ❖"; display: block; font-size: 1rem; color: #DAA520; margin-top: 10px; }
+
+/* --- Judul Bagian --- */
+.section-title { background-color: #DAA520; color: #111; padding: 12px 15px; border-radius: 8px; margin-top: 25px; font-weight: bold; font-size: 1.1rem; display: flex; align-items: center; gap: 10px; border: 1px solid #B8860B; }
+
+/* --- Gaya Input & Label --- */
+label { font-weight: 700; font-size: 1rem; color: #333; display: block; margin-top: 18px; }
+.hint { font-size: 0.85rem; color: #666; margin-top: 4px; display: block; }
+
+.input-box { width: 100%; padding: 15px; margin-top: 8px; border: 2px solid #ddd; border-radius: 8px; text-align: right; font-size: 22px; font-weight: bold; box-sizing: border-box; background-color: #fcfcfc; color: #111; transition: all 0.3s; }
+.input-box:focus { border-color: #DAA520; background-color: #fff; outline: none; box-shadow: 0 0 15px rgba(218, 165, 32, 0.3); }
+
+/* --- Tombol-Tombol --- */
+button { width: 100%; padding: 16px; background-color: #111; color: #DAA520; border: 2px solid #DAA520; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; margin-top: 25px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; display: flex; justify-content: center; align-items: center; gap: 8px; }
+button:active { transform: scale(0.97); background-color: #222; }
+.btn-scan { background-color: #DAA520; color: #111; border: none; margin-top: 12px; }
+.btn-scan:active { background-color: #B8860B; }
+
+/* --- Area Investigasi (Merah) --- */
+#area-investigasi { margin-top: 25px; background-color: #FFF0F0; padding: 20px; border-radius: 8px; border: 2px dashed #DAA520; }
+#area-investigasi label.judul-merah { color: #b91c1c; font-size: 1.1rem; margin-top: 0; display: block; font-weight: 900;}
+#area-investigasi label.sub-merah { color: #b91c1c; font-size: 0.95rem; margin-top: 15px; display: block; }
+
+/* Input khusus area merah */
+.input-merah { width: 100%; padding: 12px; border: 1px solid #fca5a5; border-radius: 8px; box-sizing: border-box; font-family: inherit; font-size: 1rem; background-color: #fff; color: #111; margin-top: 5px; }
+.input-merah:focus { border-color: #DAA520; outline: none; }
+
+/* --- HALAMAN 2: HASIL LAPORAN --- */
+#halaman-laporan { display: none; background: #fff; color: #111; padding: 30px; border-radius: 16px; border: 2px solid #DAA520; }
+.nota-header { text-align: center; padding-bottom: 15px; margin-bottom: 25px; }
+.nota-header h2 { color: #DAA520; margin: 0; border: none; padding-bottom: 0; }
+
+.nota-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed #ddd; font-size: 1.05rem; }
+.nota-row strong { color: #444; }
+
+.status-badge { display: inline-block; padding: 6px 12px; border-radius: 6px; font-weight: bold; font-size: 0.95rem; text-transform: uppercase; }
+.bg-sukses { background-color: #DAA520; color: #111; }
+.bg-error { background-color: #111; color: #DAA520; border: 1px solid #DAA520; }
+
+.catatan-box { background: #f9f9f9; padding: 15px; border-radius: 8px; border: 1px solid #eee; font-size: 0.95rem; line-height: 1.6; margin-top: 10px; color: #333; }
+
+.Ttd-area { margin-top: 60px; text-align: right; color: #555; font-size: 0.95rem; }
+
+/* --- Print CSS --- */
+@media print {
+    body { background: white; padding: 0; color: black; }
+    .dekor-bg { display: none; }
+    .container { box-shadow: none; border: none; width: 100%; max-width: 100%; margin: 0; padding: 0; }
+    .no-print { display: none !important; }
+    #halaman-laporan { display: block !important; border: none; padding: 20px; }
+    .nota-header h2, .nota-header::after { color: black; }
+    .status-badge { border: 1px solid black; color: black; background: white; }
+    button { display: none; }
+    .logo-pojok { position: absolute; top: 20px; right: 20px; }
+}

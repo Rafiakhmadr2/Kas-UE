@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pengeluaran Uang Kas - UE </title>
+    
+    <link rel="icon" type="image/png" href="logo.png">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dekor-bg bintang">✦</div>
+<div class="dekor-bg bintang">✧</div>
+<div class="dekor-bg bintang">✦</div>
+<div class="dekor-bg bintang">✧</div>
+<div class="dekor-bg belah-ketupat"></div>
+<div class="dekor-bg belah-ketupat"></div>
+<div class="dekor-bg belah-ketupat"></div>
+
+<div class="container" id="halaman-input">
+    <img src="logo.png" alt="Logo" class="logo-pojok">
+
+    <h2>Cek Kas Hari Ini</h2>
+
+    <div class="section-title">
+        <span>❖</span> Uang Dimiliki <span>❖</span>
+    </div>
+    <div>
+        <label>Berapa total uang fisik yang anda pegang saat ini?</label>
+        <span class="hint">Hitung semua uang kertas dan koin, lalu ketik totalnya:</span>
+        <input type="number" id="inputTotalA" inputmode="numeric" class="input-box" placeholder="Rp 0">
+    </div>
+
+    <div class="section-title">
+        <span>❖</span> Uang Sudah Digunakan <span>❖</span>
+    </div>
+    
+    <input type="file" accept="image/*" capture="environment" id="kameraScan" style="display: none;" onchange="prosesScan(event)">
+    <button class="btn-scan" onclick="document.getElementById('kameraScan').click()">
+        📷 Foto Nota POS (Ambil Angka)
+    </button>
+    <p id="statusScan" style="text-align: center; color: #DAA520; font-weight: bold; margin: 10px 0; font-size: 0.95rem;"></p>
+
+    <div>
+        <label>Atau ketik manual:</label>
+        <input type="number" id="inputTotalB" inputmode="numeric" class="input-box" placeholder="Rp 0">
+    </div>
+
+    <div id="area-investigasi" style="display: none;">
+        <label class="judul-merah">Oops, jumlahnya tidak pas! ⚠️</label>
+        <span class="hint" style="color: #991b1b; margin-bottom: 15px;">Catat barang yang dibeli atau alasan selisih di bawah ini:</span>
+
+        <label class="sub-merah">1. Barang / Keperluan Keluar (Bila Ada):</label>
+        <input type="text" id="inputBarang" class="input-merah" placeholder="Contoh: Beli Air Galon, ATK, Sapu...">
+
+        <label class="sub-merah">2. Alasan & Keterangan Selisih (Wajib):</label>
+        <textarea id="inputCatatan" class="input-merah" rows="3" placeholder="Contoh: Salah kembalian ke pelanggan, kasbon harian, dll..."></textarea>
+    </div>
+
+    <button id="btnProses" onclick="validasiDanPindah()">✦ Bandingkan & Bikin Laporan ✦</button>
+</div>
+
+<div class="container" id="halaman-laporan">
+    <img src="logo.png" alt="Logo" class="logo-pojok">
+
+    <div class="nota-header">
+        <h2>RINGKASAN KAS</h2>
+        <p id="lapWaktu"></p>
+    </div>
+    
+    <div class="nota-row"><strong>Uang Nyata (Di Laci):</strong> <span id="lapTotalA"></span></div>
+    <div class="nota-row"><strong>Catatan Mesin Kasir:</strong> <span id="lapTotalB"></span></div>
+    
+    <div class="nota-row" style="margin-top: 20px; border-bottom: 2px solid #DAA520; padding-bottom: 20px; align-items: center;">
+        <strong>Hasil Pengecekan:</strong> 
+        <span id="lapStatus" class="status-badge"></span>
+    </div>
+    
+    <div class="nota-row"><strong>Jumlah Selisih:</strong> <span id="lapSelisih" style="font-weight: bold;"></span></div>
+    
+    <div class="nota-row" id="rowBarang" style="display: none;">
+        <strong>Barang Keluar:</strong> <span id="lapBarang" style="text-align: right; font-weight: bold;"></span>
+    </div>
+
+    <div class="nota-row" style="flex-direction: column; gap: 8px; border-bottom: none; margin-top: 15px;">
+        <strong>Alasan / Catatan Kejadian:</strong> 
+        <div id="lapCatatan" class="catatan-box"></div>
+    </div>
+    
+    <div class="Ttd-area">
+        <p style="margin-bottom: 50px;">Disahkan Oleh,</p>
+        <p>_______________________</p>
+        <p style="font-size: 0.85rem; margin-top: 5px;">(_________________)</p>
+    </div>
+
+    <div class="no-print" style="margin-top: 30px;">
+        <button onclick="window.print()" style="background-color: #DAA520; color: #111; border: none;">📥 Simpan Laporan (PDF)</button>
+        <button onclick="window.location.reload()" style="background-color: #111; color: #DAA520; border: 2px solid #DAA520; margin-top: 12px;">❖ Hitung Ulang ❖</button>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
